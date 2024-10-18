@@ -1,5 +1,3 @@
-// Admin.js
-
 import React, { useContext } from 'react';
 import { CourseContext } from '../../context/CourseContext';
 import Navbar from '../Navbar';

@@ -1,5 +1,6 @@
 import React, { createContext, useState, useEffect } from 'react';
 import { dummyCourses } from '../dummyCourses';
+import { toast } from 'react-toastify';
 export const CourseContext = createContext();
 
 export const CourseProvider = ({ children }) => {
@@ -19,6 +20,7 @@ export const CourseProvider = ({ children }) => {
         const updatedCourses = [...courses, newCourse];
         setCourses(updatedCourses);
         localStorage.setItem('courses', JSON.stringify(updatedCourses));
+        toast.success('Add courses successfully!');
     };
 
     const updateCourse = (updatedCourse) => {
@@ -27,12 +29,14 @@ export const CourseProvider = ({ children }) => {
         );
         setCourses(updatedCourses);
         localStorage.setItem('courses', JSON.stringify(updatedCourses));
+        toast.success('Update courses successfully!');
     };
 
     const deleteCourse = (courseId) => {
         const updatedCourses = courses.filter((course) => course.id !== courseId);
         setCourses(updatedCourses);
         localStorage.setItem('courses', JSON.stringify(updatedCourses));
+        toast.error('Delete courses successfully!');
     };
 
     const enrollCourse = (courseId) => {
@@ -44,6 +48,7 @@ export const CourseProvider = ({ children }) => {
         });
         setCourses(updatedCourses);
         localStorage.setItem('courses', JSON.stringify(updatedCourses));
+        toast.success('Enroll courses successfully!');
     };
     const completeCourse = (courseId) => {
         const updatedCourses = courses.map((course) =>
@@ -51,6 +56,7 @@ export const CourseProvider = ({ children }) => {
         );
         setCourses(updatedCourses);
         localStorage.setItem('courses', JSON.stringify(updatedCourses));
+        toast.success('Complete courses successfully!');
     };
 
     return (
